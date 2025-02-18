@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Dictionary Table</title>
+    <!-- You can include any CSS or JS here -->
+  </head>
+  <body>
+    <div class="container">
+      <h1>Dictionary Table</h1>
+
+      <table border="1">
+        <thead>
+          <tr>
+            {% for key, value in dictionaries.0.items %}
+            <th>{{ key }}</th>
+            {% endfor %}
+          </tr>
+        </thead>
+        <tbody>
+          {% for dictionary in dictionaries %}
+          <tr>
+            {% for key, value in dictionary.items %}
+            <td>{{ value }}</td>
+            {% endfor %}
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      
+      <!-- Add CSRF Token if you plan to include forms below this table -->
+      <form method="post">
+        {% csrf_token %}
+        <!-- Your form fields go here -->
+        <input type="text" name="example_field" placeholder="Enter some data">
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </body>
+</html>
